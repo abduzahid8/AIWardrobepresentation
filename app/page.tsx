@@ -9,6 +9,8 @@ import VectorSearchDemo from '../src/components/VectorSearchDemo';
 import CreatorModeDemo from '../src/components/CreatorModeDemo';
 import Implementation from '../src/components/Implementation';
 
+
+
 export default function Home() {
   return (
     <main className="bg-black text-white overflow-hidden">
