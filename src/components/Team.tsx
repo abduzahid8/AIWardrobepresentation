@@ -1,3 +1,5 @@
+'use client';
+
 import team from '../data/team.json'
 import { motion } from 'framer-motion'
 
