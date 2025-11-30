@@ -34,7 +34,7 @@ export default function ProblemSolution() {
             <h3 className="text-3xl font-bold mb-6 text-red-400">❌ The Problem</h3>
             <div className="space-y-4">
               {problemPoints.map((point, i) => (
-                <motion. div
+                <motion.div
                   key={point.title}
                   className="p-4 rounded-lg bg-red-600/10 border border-red-600/30 hover:border-red-600/60 transition"
                   initial={{ x: -50, opacity: 0 }}
@@ -61,7 +61,7 @@ export default function ProblemSolution() {
                   initial={{ x: 50, opacity: 0 }}
                   whileInView={{ x: 0, opacity: 1 }}
                   viewport={{ once: true }}
-                  transition={{ delay: i * 0. 1 }}
+                  transition={{ delay: i * 0.1}}
                 >
                   <div className="text-3xl mb-2">{point. emoji}</div>
                   <h4 className="font-bold text-green-300">{point.title}</h4>

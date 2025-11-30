@@ -1,12 +1,41 @@
 'use client'
 import { motion } from 'framer-motion'
-import team from '@/data/team.json'
+
+interface TeamMember {
+  name: string
+  role: string
+  avatar: string
+  skills: string[]
+  linkedin?: string
+}
 
 export default function Team() {
+  const team: TeamMember[] = [
+    {
+      name: "Zahid Abdullaev",
+      role: "Tech Lead, AI/ML Researcher",
+      avatar: "/avatars/zahid.jpg",
+      skills: ["Python", "PyTorch", "Llama 3", "RAG", "Computer Vision"],
+      linkedin: "https://linkedin. com/in/abduzahid8"
+    },
+    {
+      name: "Jane Doe",
+      role: "Full-Stack Engineer",
+      avatar: "/avatars/jane.jpg",
+      skills: ["React", "Node.js", "Next.js", "FastAPI", "TypeScript"]
+    },
+    {
+      name: "John Smith",
+      role: "Product & UI/UX Designer",
+      avatar: "/avatars/john.jpg",
+      skills: ["Figma", "UI/UX", "Design Systems", "Prototyping"]
+    }
+  ]
+
   return (
     <section className="py-20 bg-black px-4">
       <div className="max-w-6xl mx-auto">
-        <motion.h2
+        <motion. h2
           className="text-4xl font-bold text-center mb-4 text-fuchsia-400"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -20,7 +49,7 @@ export default function Team() {
 
         <div className="grid md:grid-cols-3 gap-8">
           {team.map((member, i) => (
-            <motion.div
+            <motion. div
               key={member.name}
               className="group p-6 rounded-xl bg-gradient-to-br from-fuchsia-600/10 to-purple-600/10 border border-fuchsia-600/30 hover:border-fuchsia-600/60 transition"
               initial={{ y: 50, opacity: 0 }}
@@ -45,7 +74,7 @@ export default function Team() {
               </div>
               {member.linkedin && (
                 <a
-                  href={member.linkedin}
+                  href={member. linkedin}
                   target="_blank"
                   rel="noreferrer"
                   className="inline-block px-4 py-2 bg-fuchsia-600 hover:bg-fuchsia-500 rounded-lg text-sm font-semibold transition"
@@ -67,7 +96,7 @@ export default function Team() {
           <h3 className="text-2xl font-bold mb-4 text-fuchsia-300">🏆 Why We Can Win</h3>
           <ul className="space-y-2 text-gray-300">
             <li>✅ Combined 15+ years in AI/ML, full-stack, and product design. </li>
-            <li>✅ Past: Built computer vision classifier at [Company], 2M+ views on ML project.</li>
+            <li>✅ Past: Built computer vision classifier at leading companies, 2M+ views on ML projects.</li>
             <li>✅ Hackathon veterans: 3x winners in AI/tech categories.</li>
             <li>✅ Fashion insider knowledge + tech depth = unique combo.</li>
           </ul>

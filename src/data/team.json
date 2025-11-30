@@ -4,18 +4,20 @@
     "role": "Tech Lead, AI/ML Researcher",
     "avatar": "/avatars/zahid. jpg",
     "skills": ["Python", "PyTorch", "Llama 3", "RAG", "Computer Vision"],
-    "linkedin": "https://linkedin. com/in/abduzahid8"
+    "linkedin": "https://linkedin.com/in/abduzahid8"
   },
   {
     "name": "Jane Doe",
     "role": "Full-Stack Engineer",
     "avatar": "/avatars/jane.jpg",
-    "skills": ["React", "Node.js", "Next.js", "FastAPI", "TypeScript"]
+    "skills": ["React", "Node.js", "Next.js", "FastAPI", "TypeScript"],
+    "linkedin": ""
   },
   {
     "name": "John Smith",
     "role": "Product & UI/UX Designer",
     "avatar": "/avatars/john.jpg",
-    "skills": ["Figma", "UI/UX", "Design Systems", "Prototyping"]
+    "skills": ["Figma", "UI/UX", "Design Systems", "Prototyping"],
+    "linkedin": ""
   }
 ]
