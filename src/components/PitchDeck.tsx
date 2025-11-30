@@ -1,91 +1,51 @@
-'use client'
-import { motion } from 'framer-motion'
-import { useState } from 'react'
+'use client';
+
+import { motion } from 'framer-motion';
+import { FileText, Download, Eye } from 'lucide-react';
 
 export default function PitchDeck() {
-  const [isOpen, setIsOpen] = useState(false)
-
   const slides = [
-    { title: 'Problem', content: 'Fashion inspiration dies in galleries. 0 connection to your wardrobe.' },
-    { title: 'Solution', content: 'AI + Vision = Turn any creator look into your outfit in seconds.' },
-    { title: 'Market', content: '$47. 2B fashion industry. 1. 3B creator posts/day. Winner takes all.' },
-    { title: 'Traction', content: '15K beta users. 12. 4% conversion.  $45K MRR in 6 months.' },
-    { title: 'Team', content: '3 founders. 30+ years combined. 3x hackathon winners.' },
-    { title: 'Ask', content: 'Seed round: $2M to scale to 2M users and $10M ARR.' },
-  ]
+    { title: "The Problem", desc: "Why current styling apps fail" },
+    { title: "The Solution", desc: "Generative AI + Influencer Data" },
+    { title: "Market Size", desc: "$2.5T Global Fashion Market" },
+    { title: "Business Model", desc: "Affiliate + Premium Sub" }
+  ];
 
   return (
-    <section className="py-20 bg-gradient-to-b from-zinc-950 to-black px-4">
-      <div className="max-w-4xl mx-auto">
-        <motion.div
-          className="text-center mb-12"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-        >
-          <h2 className="text-4xl font-bold text-fuchsia-400 mb-4">📊 Investor Pitch Deck</h2>
-          <p className="text-gray-400 mb-8">
-            6-slide summary of our opportunity, traction, and ask. 
-          </p>
-          <button
-            onClick={() => setIsOpen(true)}
-            className="px-8 py-4 rounded-lg bg-gradient-to-r from-fuchsia-600 to-purple-600 hover:from-fuchsia-500 hover:to-purple-500 font-bold transition shadow-lg"
-          >
-            Open Pitch Deck →
-          </button>
-        </motion.div>
-
-        {/* Modal */}
-        {isOpen && (
-          <motion.div
-            className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-50 p-4"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            onClick={() => setIsOpen(false)}
-          >
-            <motion.div
-              className="w-full max-w-3xl h-[600px] bg-black rounded-xl border-2 border-fuchsia-600 overflow-hidden flex flex-col"
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              onClick={(e) => e.stopPropagation()}
+    <section className="py-20 bg-zinc-950 px-4" id="pitch">
+      <div className="max-w-6xl mx-auto">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl font-bold mb-4">Investor Deck</h2>
+          <p className="text-gray-400">Our roadmap to revolutionizing fashion tech.</p>
+        </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {slides.map((slide, i) => (
+            <motion.div 
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: i * 0.1 }}
+              className="bg-zinc-900 p-6 rounded-xl border border-zinc-800 hover:border-fuchsia-500/50 transition-colors group"
             >
-              <div className="flex-1 overflow-y-auto">
-                <div className="grid grid-cols-2 gap-4 p-8">
-                  {slides.map((slide, i) => (
-                    <motion.div
-                      key={slide.title}
-                      className="p-6 rounded-lg bg-gradient-to-br from-fuchsia-600/20 to-purple-600/20 border border-fuchsia-600/50 hover:border-fuchsia-600/80 transition cursor-pointer"
-                      initial={{ scale: 0.9, opacity: 0 }}
-                      animate={{ scale: 1, opacity: 1 }}
-                      transition={{ delay: i * 0. 05 }}
-                      whileHover={{ scale: 1.05 }}
-                    >
-                      <h3 className="text-lg font-bold text-fuchsia-400 mb-3">Slide {i + 1}</h3>
-                      <h4 className="font-bold text-fuchsia-300 mb-2">{slide.title}</h4>
-                      <p className="text-gray-400 text-sm">{slide.content}</p>
-                    </motion.div>
-                  ))}
-                </div>
+              <div className="h-40 bg-zinc-950 rounded-lg mb-4 flex items-center justify-center group-hover:bg-zinc-900 transition-colors">
+                <FileText className="text-zinc-700 group-hover:text-fuchsia-500 transition-colors" size={48} />
               </div>
-              <div className="p-4 border-t border-fuchsia-600/30 flex gap-2">
-                <button
-                  onClick={() => setIsOpen(false)}
-                  className="px-4 py-2 rounded bg-zinc-800 hover:bg-zinc-700 transition"
-                >
-                  Close
-                </button>
-                <a
-                  href="/pitch-deck. pdf"
-                  download
-                  className="flex-1 px-4 py-2 rounded bg-fuchsia-600 hover:bg-fuchsia-500 font-bold transition text-center"
-                >
-                  Download PDF →
-                </a>
-              </div>
+              <h3 className="font-bold text-lg mb-1">{slide.title}</h3>
+              <p className="text-sm text-gray-500">{slide.desc}</p>
             </motion.div>
-          </motion.div>
-        )}
+          ))}
+        </div>
+
+        <div className="mt-12 text-center flex justify-center gap-4">
+          <button className="flex items-center gap-2 px-6 py-3 rounded-full bg-white text-black font-bold hover:bg-gray-200 transition">
+            <Eye size={20} /> View Full Deck
+          </button>
+          <button className="flex items-center gap-2 px-6 py-3 rounded-full bg-zinc-800 border border-zinc-700 hover:bg-zinc-700 transition">
+            <Download size={20} /> Download PDF
+          </button>
+        </div>
       </div>
     </section>
-  )
+  );
 }
