@@ -1,8 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-// --- 1. AUTOMATICALLY ADD 'use client' TO ALL COMPONENTS ---
-// This ensures Hero3D, MetricsDashboard, and ANY new file you added works correctly.
+// --- 1. AUTOMATICALLY ADD 'use client' & ENSURE DEFAULT EXPORTS ---
 const componentsDir = path.join(__dirname, 'src/components');
 
 if (fs.existsSync(componentsDir)) {
@@ -13,14 +12,30 @@ if (fs.existsSync(componentsDir)) {
       const filePath = path.join(componentsDir, file);
       let content = fs.readFileSync(filePath, 'utf8');
       
-      // Check if it already has 'use client'
+      let modified = false;
+
+      // 1. Add 'use client' if missing
       if (!content.includes("'use client'") && !content.includes('"use client"')) {
-        // Add 'use client' to the top
-        const newContent = "'use client';\n\n" + content;
-        fs.writeFileSync(filePath, newContent, 'utf8');
+        content = "'use client';\n\n" + content;
+        modified = true;
         console.log(`✅ Added 'use client' to: ${file}`);
+      }
+
+      // 2. Ensure 'export default' exists (Fixes "Element type is invalid" error)
+      if (!content.includes('export default')) {
+        const componentName = path.basename(file, path.extname(file));
+        // Only append if it looks like the component is defined in the file
+        if (content.includes(`function ${componentName}`) || content.includes(`const ${componentName}`)) {
+          content += `\n\nexport default ${componentName};\n`;
+          modified = true;
+          console.log(`✅ Added 'export default' to: ${file}`);
+        }
+      }
+
+      if (modified) {
+        fs.writeFileSync(filePath, content, 'utf8');
       } else {
-        console.log(`👍 Already has 'use client': ${file}`);
+        console.log(`👍 Component verified: ${file}`);
       }
     }
   });
@@ -28,10 +43,19 @@ if (fs.existsSync(componentsDir)) {
   console.log('⚠️ src/components directory not found!');
 }
 
-// --- 2. FIX app/layout.tsx (Ensure CSS Path is Correct) ---
+// --- 2. FIX app/layout.tsx (Corrected Syntax) ---
 const layoutPath = path.join(__dirname, 'app/layout.tsx');
-if (fs.existsSync(layoutPath)) {
-  const layoutContent = `import type { Metadata } from "next";
+const layoutJsPath = path.join(__dirname, 'app/layout.js'); 
+
+// Remove conflicting .js file if it exists
+if (fs.existsSync(layoutJsPath)) {
+  fs.unlinkSync(layoutJsPath);
+  console.log('🗑️ Deleted conflicting app/layout.js');
+}
+
+// Fixed the syntax error in the template string below
+const layoutContent = `import React from "react";
+import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "../src/styles/globals.css";
 
@@ -55,9 +79,9 @@ export default function RootLayout({
     </html>
   );
 }`;
-  fs.writeFileSync(layoutPath, layoutContent);
-  console.log('✅ Fixed: app/layout.tsx');
-}
+fs.writeFileSync(layoutPath, layoutContent);
+console.log('✅ Fixed: app/layout.tsx');
+
 
 // --- 3. FIX PACKAGE.JSON (Ensure Dependencies) ---
 const packagePath = path.join(__dirname, 'package.json');
@@ -86,3 +110,54 @@ if (fs.existsSync(packagePath)) {
     console.log('✅ Updated package.json with missing dependencies');
   }
 }
+
+// --- 4. FIX app/page.tsx (Fix Invalid Element Type Error) ---
+const pagePath = path.join(__dirname, 'app/page.tsx');
+const pageJsPath = path.join(__dirname, 'app/page.js'); 
+
+// Remove conflicting .js file if it exists
+if (fs.existsSync(pageJsPath)) {
+  fs.unlinkSync(pageJsPath);
+  console.log('🗑️ Deleted conflicting app/page.js');
+}
+
+const pageContent = `import Hero from '../src/components/Hero';
+import ProblemSolution from '../src/components/ProblemSolution';
+import AITechStack from '../src/components/AITechStack';
+import VectorSearchDemo from '../src/components/VectorSearchDemo';
+import CreatorModeDemo from '../src/components/CreatorModeDemo';
+import Implementation from '../src/components/Implementation';
+import Team from '../src/components/Team';
+import Footer from '../src/components/Footer';
+import MetricsDashboard from '../src/components/MetricsDashboard';
+import VectorSpaceViz from '../src/components/VectorSpaceViz';
+import TechArchitecture from '../src/components/TechArchitecture';
+import BusinessModel from '../src/components/BusinessModel';
+import ProductWalkthrough from '../src/components/ProductWalkthrough';
+import PitchDeck from '../src/components/PitchDeck';
+import CTA from '../src/components/CTA';
+
+export default function Home() {
+  return (
+    <main className="bg-black text-white overflow-hidden">
+      <Hero />
+      <ProblemSolution />
+      <AITechStack />
+      <VectorSearchDemo />
+      <CreatorModeDemo />
+      <Implementation />
+      <MetricsDashboard />
+      <VectorSpaceViz />
+      <TechArchitecture />
+      <BusinessModel />
+      <ProductWalkthrough />
+      <PitchDeck />
+      <Team />
+      <CTA />
+      <Footer />
+    </main>
+  );
+}
+`;
+fs.writeFileSync(pagePath, pageContent);
+console.log('✅ Fixed: app/page.tsx (Resolved component import errors)');
