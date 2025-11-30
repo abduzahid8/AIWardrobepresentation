@@ -1,33 +1,14 @@
-@import url('https://fonts.googleapis. com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700;800;900&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-html {
-  font-family: 'Inter', system-ui, sans-serif;
-  scroll-behavior: smooth;
+:root {
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 0, 0, 0;
+  --background-end-rgb: 0, 0, 0;
 }
 
 body {
-  @apply bg-black text-white;
-}
-
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'DM Serif Display', serif;
-}
-
-@keyframes shimmer {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-}
-
-. shimmer {
-  background-size: 200% 200%;
-  animation: shimmer 3s ease-in-out infinite;
-}
-
-/* Glassmorphism */
-.glass {
-  @apply bg-white/10 backdrop-blur-md border border-white/20;
+  color: rgb(var(--foreground-rgb));
+  background: black;
 }

@@ -1,5 +1,5 @@
 import type { Metadata } from "next"
-import "./globals.css"
+import "../src/styles/globals.css";
 
 export const metadata: Metadata = {
   title: "AI Fashion OS - Shazam for Style",
