@@ -1,3 +1,5 @@
+'use client';
+
 import Hero from '../src/components/Hero';
 import ProblemSolution from '../src/components/ProblemSolution';
 import AITechStack from '../src/components/AITechStack';
