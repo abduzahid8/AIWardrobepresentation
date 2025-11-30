@@ -1,35 +1,61 @@
-'use client';
-
+'use client'
 import { motion } from 'framer-motion'
 
-const roadmap = [
-  { label: "Prototype", period: "Nov 2024", desc: "Core AI stylist and demo" },
-  { label: "AI Tuning", period: "Dec 2024", desc: "Personalization & influencer training" },
-  { label: "Creator Onboarding", period: "Jan 2025", desc: "First 10 creators live" },
-  { label: "Launch", period: "Feb 2025", desc: "Open beta" },
-]
-
 export default function Roadmap() {
+  const roadmap = [
+    { label: 'Now: Prototype', period: 'Nov 2024', status: '✅ LIVE', desc: 'Core AI stylist + demo' },
+    { label: 'AI Fine-Tuning', period: 'Dec 2024', status: '🔄 IN PROGRESS', desc: 'Creator modes + personalization' },
+    { label: 'Creator Onboarding', period: 'Jan 2025', status: '📋 PLANNED', desc: 'First 10 influencers' },
+    { label: 'MVP Launch', period: 'Feb 2025', status: '🎯 TARGET', desc: 'Open beta to 1K users' },
+  ]
+
   return (
-    <section className="bg-zinc-900 text-white py-16" id="roadmap">
-      <div className="max-w-3xl mx-auto px-4">
-        <h2 className="text-3xl font-bold mb-8 text-center text-fuchsia-400">Product Roadmap</h2>
-        <ol className="relative border-l-4 border-fuchsia-500 min-h-[220px] pl-8 py-4 space-y-12">
-          {roadmap.map((step, i) => (
-            <motion.li
-              key={step.label}
-              className="mb-3 ml-4"
-              initial={{ opacity: 0, x: -20 }} 
-              whileInView={{ opacity: 1, x: 0 }} 
-              viewport={{ once: true }} 
-              transition={{ delay: 0.12 * i }}
-            >
-              <span className="absolute -left-6 flex items-center justify-center w-12 h-12 bg-fuchsia-600 rounded-full text-xl font-semibold">{i+1}</span>
-              <h3 className="text-xl font-bold">{step.label} <span className="ml-2 text-xs text-fuchsia-300">{step.period}</span></h3>
-              <p className="text-zinc-200">{step.desc}</p>
-            </motion.li>
-          ))}
-        </ol>
+    <section className="py-20 bg-gradient-to-b from-zinc-950 to-black px-4">
+      <div className="max-w-5xl mx-auto">
+        <motion.h2
+          className="text-4xl font-bold text-center mb-12 text-fuchsia-400"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+        >
+          📅 Roadmap & Current Stage
+        </motion.h2>
+
+        <div className="relative">
+          {/* Timeline line */}
+          <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-fuchsia-600 to-blue-600 transform -translate-x-1/2" />
+
+          <div className="space-y-12">
+            {roadmap.map((item, i) => (
+              <motion.div
+                key={item.label}
+                className={`flex ${i % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} gap-8 items-center`}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+              >
+                {/* Content */}
+                <div className={`flex-1 ${i % 2 === 0 ? 'md:text-right' : 'md:text-left'}`}>
+                  <div className={`p-6 rounded-xl ${i % 2 === 0 ? 'bg-gradient-to-br from-fuchsia-600/20 to-purple-600/20' : 'bg-gradient-to-br from-blue-600/20 to-cyan-600/20'} border border-fuchsia-600/30`}>
+                    <h3 className="text-xl font-bold text-fuchsia-300 mb-1">{item.label}</h3>
+                    <p className="text-gray-400 text-sm mb-2">{item.period}</p>
+                    <p className="text-gray-300">{item. desc}</p>
+                    <span className="inline-block mt-3 px-3 py-1 bg-fuchsia-600/40 rounded-lg text-xs font-bold text-fuchsia-300">
+                      {item.status}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Timeline dot */}
+                <div className="flex-shrink-0 w-6 h-6 rounded-full bg-fuchsia-600 border-4 border-black" />
+
+                {/* Spacer */}
+                <div className="hidden md:flex-1" />
+              </motion.div>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   )

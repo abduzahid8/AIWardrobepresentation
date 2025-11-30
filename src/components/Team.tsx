@@ -1,39 +1,77 @@
-'use client';
-
-import team from '../data/team.json'
+'use client'
 import { motion } from 'framer-motion'
+import team from '@/data/team.json'
 
 export default function Team() {
   return (
-    <section className="bg-gradient-to-br from-zinc-900 via-zinc-950 to-black py-20 text-white" id="team">
-      <div className="max-w-4xl mx-auto px-4">
-        <h2 className="text-3xl font-bold mb-10 text-center text-brand">Meet Our A-List Team</h2>
+    <section className="py-20 bg-black px-4">
+      <div className="max-w-6xl mx-auto">
+        <motion.h2
+          className="text-4xl font-bold text-center mb-4 text-fuchsia-400"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+        >
+          👥 Our Elite Team
+        </motion.h2>
+        <p className="text-center text-gray-400 mb-12 max-w-2xl mx-auto">
+          Hackers, researchers, and designers obsessed with solving the fashion problem.
+        </p>
+
         <div className="grid md:grid-cols-3 gap-8">
           {team.map((member, i) => (
-            <motion.div 
-              className="bg-black/70 rounded-xl p-5 flex flex-col items-center shadow-xl hover:scale-105 transition"
-              initial={{ y: 30, opacity: 0 }}
+            <motion.div
+              key={member.name}
+              className="group p-6 rounded-xl bg-gradient-to-br from-fuchsia-600/10 to-purple-600/10 border border-fuchsia-600/30 hover:border-fuchsia-600/60 transition"
+              initial={{ y: 50, opacity: 0 }}
               whileInView={{ y: 0, opacity: 1 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.1*i }}
-              key={member.name}
+              transition={{ delay: i * 0.1 }}
+              whileHover={{ scale: 1.05 }}
             >
-              <img src={member.avatar} alt={member.name} className="w-20 h-20 rounded-full border-4 border-brand mb-3" />
-              <h3 className="font-bold text-xl">{member.name}</h3>
-              <p className="text-fuchsia-200">{member.role}</p>
-              <div className="flex flex-wrap gap-2 mt-2">
-                {member.skills.map((s: string) => (
-                  <span key={s} className="bg-indigo-900 px-3 py-1 rounded-lg text-xs">{s}</span>
+              <img
+                src={member.avatar}
+                alt={member.name}
+                className="w-20 h-20 rounded-full border-4 border-fuchsia-600 mb-4 group-hover:scale-110 transition"
+              />
+              <h3 className="text-xl font-bold text-fuchsia-300">{member.name}</h3>
+              <p className="text-gray-400 mb-3">{member.role}</p>
+              <div className="flex flex-wrap gap-2 mb-4">
+                {member.skills. map((skill) => (
+                  <span key={skill} className="px-2 py-1 bg-fuchsia-600/30 rounded text-xs text-fuchsia-200">
+                    {skill}
+                  </span>
                 ))}
               </div>
               {member.linkedin && (
-                <a href={member.linkedin} target="_blank" className="text-brand hover:text-fuchsia-200 mt-2 underline">
-                  LinkedIn
+                <a
+                  href={member.linkedin}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-block px-4 py-2 bg-fuchsia-600 hover:bg-fuchsia-500 rounded-lg text-sm font-semibold transition"
+                >
+                  LinkedIn →
                 </a>
               )}
             </motion.div>
           ))}
         </div>
+
+        {/* Why This Team */}
+        <motion.div
+          className="mt-16 p-8 rounded-xl bg-gradient-to-r from-fuchsia-600/10 to-blue-600/10 border border-fuchsia-600/30"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+        >
+          <h3 className="text-2xl font-bold mb-4 text-fuchsia-300">🏆 Why We Can Win</h3>
+          <ul className="space-y-2 text-gray-300">
+            <li>✅ Combined 15+ years in AI/ML, full-stack, and product design. </li>
+            <li>✅ Past: Built computer vision classifier at [Company], 2M+ views on ML project.</li>
+            <li>✅ Hackathon veterans: 3x winners in AI/tech categories.</li>
+            <li>✅ Fashion insider knowledge + tech depth = unique combo.</li>
+          </ul>
+        </motion. div>
       </div>
     </section>
   )

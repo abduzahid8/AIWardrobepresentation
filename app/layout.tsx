@@ -1,24 +1,20 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "../src/styles/globals.css"; // ✅ Fixed path to point to src/styles
-
-const inter = Inter({ subsets: ["latin"] });
+import type { Metadata } from "next"
+import "./globals.css"
 
 export const metadata: Metadata = {
-  title: "AI Wardrobe",
-  description: "AI Stylist Application",
-};
+  title: "AI Fashion OS - Shazam for Style",
+  description: "The only platform combining Generative AI, Computer Vision, and Social Graphs for personal styling.",
+  keywords: "AI Fashion, Styling, Creator Mode, TikTok, Instagram, Fashion Tech",
+}
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: {
+  children: React.ReactNode
+}) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
-        {children}
-      </body>
+    <html lang="en" className="scroll-smooth">
+      <body>{children}</body>
     </html>
-  );
+  )
 }

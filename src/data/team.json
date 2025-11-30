@@ -1,21 +1,21 @@
 [
   {
     "name": "Zahid Abdullaev",
-    "role": "Tech Lead, AI Researcher",
-    "avatar": "/avatars/zahid.jpg",
-    "skills": ["Python", "PyTorch", "Llama 3", "RAG", "Vision AI"],
-    "linkedin": "https://linkedin.com/in/abduzahid8"
+    "role": "Tech Lead, AI/ML Researcher",
+    "avatar": "/avatars/zahid. jpg",
+    "skills": ["Python", "PyTorch", "Llama 3", "RAG", "Computer Vision"],
+    "linkedin": "https://linkedin. com/in/abduzahid8"
   },
   {
     "name": "Jane Doe",
-    "role": "Full-Stack Developer",
+    "role": "Full-Stack Engineer",
     "avatar": "/avatars/jane.jpg",
-    "skills": ["React", "Node.js", "TypeScript", "Next.js"]
+    "skills": ["React", "Node.js", "Next.js", "FastAPI", "TypeScript"]
   },
   {
     "name": "John Smith",
-    "role": "Product Designer",
+    "role": "Product & UI/UX Designer",
     "avatar": "/avatars/john.jpg",
-    "skills": ["Figma", "UI/UX", "Visual Design"]
+    "skills": ["Figma", "UI/UX", "Design Systems", "Prototyping"]
   }
 ]
