@@ -1,6 +1,40 @@
 const fs = require('fs');
 const path = require('path');
 
+// --- 0. FIX package.json (Ensure Dependencies) ---
+const packagePath = path.join(__dirname, 'package.json');
+if (fs.existsSync(packagePath)) {
+  const pkg = JSON.parse(fs.readFileSync(packagePath, 'utf8'));
+  
+  // Ensure dependencies object exists
+  if (!pkg.dependencies) pkg.dependencies = {};
+  
+  // Add missing critical dependencies
+  const requiredDeps = {
+    'lucide-react': '^0.378.0',
+    'framer-motion': '^11.0.0',
+    'recharts': '^2.12.0',
+    'clsx': '^2.1.0',
+    'tailwind-merge': '^2.2.0'
+  };
+
+  let updated = false;
+  for (const [dep, version] of Object.entries(requiredDeps)) {
+    if (!pkg.dependencies[dep]) {
+      pkg.dependencies[dep] = version;
+      console.log(`📦 Added missing dependency: ${dep}`);
+      updated = true;
+    }
+  }
+
+  if (updated) {
+    fs.writeFileSync(packagePath, JSON.stringify(pkg, null, 2));
+    console.log('✅ Updated package.json');
+  } else {
+    console.log('✅ package.json dependencies look good');
+  }
+}
+
 // --- 1. FIX app/layout.tsx (Correct CSS Path) ---
 const layoutPath = path.join(__dirname, 'app/layout.tsx');
 const layoutContent = `import type { Metadata } from "next";
