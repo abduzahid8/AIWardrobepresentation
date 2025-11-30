@@ -1,5 +1,6 @@
 'use client'
 import { useEffect, useRef, useState } from 'react'
+import { ScatterChart, Scatter, XAxis, YAxis, ResponsiveContainer, Tooltip, Cell } from 'recharts';
 import { motion } from 'framer-motion'
 
 export default function VectorSpaceViz() {
@@ -8,10 +9,10 @@ export default function VectorSpaceViz() {
 
   // Mock data: wardrobe items in 2D embedding space
   const items = [
-    { name: 'Beige Trench', x: 0. 8, y: 0.85, emoji: '🧥', color: '#fbbf24' },
+    { name: 'Beige Trench', x: 0.8, y: 0.85, emoji: '🧥', color: '#fbbf24' },
     { name: 'Wide Jeans', x: 0.2, y: 0.6, emoji: '👖', color: '#3b82f6' },
-    { name: 'White Shirt', x: 0. 9, y: 0.1, emoji: '👕', color: '#f3f4f6' },
-    { name: 'Loafers', x: 0. 1, y: 0.2, emoji: '👞', color: '#8b5cf6' },
+    { name: 'White Shirt', x: 0.9, y: 0.1, emoji: '👕', color: '#f3f4f6' },
+    { name: 'Loafers', x: 0.1, y: 0.2, emoji: '👞', color: '#8b5cf6' },
     { name: 'Leather Belt', x: 0.5, y: 0.5, emoji: '⌚', color: '#dc2626' },
   ]
 
