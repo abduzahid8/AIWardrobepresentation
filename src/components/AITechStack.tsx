@@ -14,7 +14,7 @@ export default function AITechStack() {
   return (
     <section className="py-20 bg-black px-4">
       <div className="max-w-6xl mx-auto">
-        <motion. h2
+        <motion.h2
           className="text-4xl md:text-5xl font-bold text-center mb-4 text-fuchsia-400"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}

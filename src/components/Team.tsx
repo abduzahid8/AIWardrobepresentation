@@ -12,20 +12,20 @@ interface TeamMember {
 export default function Team() {
   const team: TeamMember[] = [
     {
-      name: "Zahid Abdullaev",
+      name: "Vahijanov Zahid",
       role: "Tech Lead, AI/ML Researcher",
-      avatar: "/avatars/zahid.jpg",
+      avatar: "../../public/zahid.jpg",
       skills: ["Python", "PyTorch", "Llama 3", "RAG", "Computer Vision"],
       linkedin: "https://linkedin. com/in/abduzahid8"
     },
     {
-      name: "Jane Doe",
+      name: "Usmanov Bilol",
       role: "Full-Stack Engineer",
       avatar: "/avatars/jane.jpg",
       skills: ["React", "Node.js", "Next.js", "FastAPI", "TypeScript"]
     },
     {
-      name: "John Smith",
+      name: "Juraev Dovud",
       role: "Product & UI/UX Designer",
       avatar: "/avatars/john.jpg",
       skills: ["Figma", "UI/UX", "Design Systems", "Prototyping"]
@@ -35,16 +35,16 @@ export default function Team() {
   return (
     <section className="py-20 bg-black px-4">
       <div className="max-w-6xl mx-auto">
-        <motion. h2
+        <motion.h2
           className="text-4xl font-bold text-center mb-4 text-fuchsia-400"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
         >
-          👥 Our Elite Team
+          👥 Our Team
         </motion.h2>
         <p className="text-center text-gray-400 mb-12 max-w-2xl mx-auto">
-          Hackers, researchers, and designers obsessed with solving the fashion problem.
+          Machine Learning, researchers, and designers obsessed with solving the fashion problem.
         </p>
 
         <div className="grid md:grid-cols-3 gap-8">
@@ -95,12 +95,11 @@ export default function Team() {
         >
           <h3 className="text-2xl font-bold mb-4 text-fuchsia-300">🏆 Why We Can Win</h3>
           <ul className="space-y-2 text-gray-300">
-            <li>✅ Combined 15+ years in AI/ML, full-stack, and product design. </li>
-            <li>✅ Past: Built computer vision classifier at leading companies, 2M+ views on ML projects.</li>
-            <li>✅ Hackathon veterans: 3x winners in AI/tech categories.</li>
+            <li>✅ Combined in AI/ML, full-stack, and product design. </li>
             <li>✅ Fashion insider knowledge + tech depth = unique combo.</li>
+            <li>✅ Experience in our brand-store we know problem our users</li>
           </ul>
-        </motion. div>
+        </motion.div>
       </div>
     </section>
   )
