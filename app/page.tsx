@@ -10,9 +10,7 @@ import Team from '../src/components/Team';
 import Footer from '../src/components/Footer';
 import MetricsDashboard from '../src/components/MetricsDashboard';
 import VectorSpaceViz from '../src/components/VectorSpaceViz';
-import TechArchitecture from '../src/components/TechArchitecture';
 import BusinessModel from '../src/components/BusinessModel';
-import ProductWalkthrough from '../src/components/ProductWalkthrough';
 import PitchDeck from '../src/components/PitchDeck';
 import CTA from '../src/components/CTA';
 
@@ -27,9 +25,7 @@ export default function Home() {
       <Implementation />
       <MetricsDashboard />
       <VectorSpaceViz />
-      <TechArchitecture />
       <BusinessModel />
-      <ProductWalkthrough />
       <PitchDeck />
       <Team />
       <CTA />
