@@ -44,7 +44,7 @@ export default function ProblemSolution() {
                 >
                   <div className="text-3xl mb-2">{point.emoji}</div>
                   <h4 className="font-bold text-red-300">{point.title}</h4>
-                  <p className="text-gray-400 text-sm">{point. desc}</p>
+                  <p className="text-gray-400 text-sm">{point.desc}</p>
                 </motion.div>
               ))}
             </div>
