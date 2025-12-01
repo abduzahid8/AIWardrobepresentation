@@ -1,7 +1,7 @@
 'use client';
 
 import { ScatterChart, Scatter, XAxis, YAxis, ResponsiveContainer, Tooltip, Cell } from 'recharts';
-import { motion } from 'framer-motion';
+
 
 export default function VectorSpaceViz() {
   const items = [
