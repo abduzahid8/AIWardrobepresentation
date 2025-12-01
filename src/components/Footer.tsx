@@ -5,7 +5,7 @@ export default function Footer() {
   return (
     <footer className="bg-black border-t border-fuchsia-600/30 py-12 px-4">
       <div className="max-w-6xl mx-auto">
-        <motion. div
+        <motion.div
           className="text-center"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
