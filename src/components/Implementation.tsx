@@ -44,7 +44,7 @@ export default function Implementation() {
   return (
     <section className="py-20 bg-black px-4">
       <div className="max-w-6xl mx-auto">
-        <motion. h2
+        <motion.h2
           className="text-4xl font-bold text-center mb-4 text-fuchsia-400"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -57,7 +57,7 @@ export default function Implementation() {
         </p>
 
         <div className="space-y-6">
-          {steps. map((step, i) => (
+          {steps. map((step,i) => (
             <motion.div
               key={step.num}
               className="p-6 rounded-xl bg-gradient-to-r from-fuchsia-600/10 to-blue-600/10 border border-fuchsia-600/30 hover:border-fuchsia-600/60 transition"
@@ -78,7 +78,7 @@ export default function Implementation() {
                   </div>
                 </div>
               </div>
-            </motion. div>
+            </motion.div>
           ))}
         </div>
       </div>
