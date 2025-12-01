@@ -31,7 +31,7 @@ export default function VectorSearchDemo() {
           viewport={{ once: true }}
         >
           🧬 Live Vector Search Demo
-        </motion. h2>
+        </motion.h2>
         <p className="text-center text-gray-400 mb-12">
           See how our AI matches creator outfits to YOUR wardrobe in real-time.
         </p>
