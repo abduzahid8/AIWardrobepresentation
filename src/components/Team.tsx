@@ -49,7 +49,7 @@ export default function Team() {
 
         <div className="grid md:grid-cols-3 gap-8">
           {team.map((member, i) => (
-            <motion. div
+            <motion.div
               key={member.name}
               className="group p-6 rounded-xl bg-gradient-to-br from-fuchsia-600/10 to-purple-600/10 border border-fuchsia-600/30 hover:border-fuchsia-600/60 transition"
               initial={{ y: 50, opacity: 0 }}
